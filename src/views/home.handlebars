@@ -1,0 +1,43 @@
+<h1>Vista Home</h1>
+<div>
+    <form action="/" method="post" enctype="multipart/form-data" id="form">
+        <label for="title">
+            Title :<input type="text" name="title" id="inputName" >
+        </label>
+        <label for="description">
+            Description :<input type="text" name="description" id="inputDescription">
+        </label>
+        <label for="code">
+            Code :<input type="number" name="code" id="inputCode">
+        </label>
+        <label for="price">
+            Price :<input type="number" name="price" id="inputPrice">
+        </label>
+        <label for="stock">
+            Stock :<input type="number" name="stock" id="inputStock">
+        </label>
+        <label for="category">
+            Category :<input type="text" name="category" id="inputCategory">
+        </label>
+        <input type="submit">
+</div> 
+
+<div id="list">
+  {{#each products}}
+    <ul id="{{_id}}" style='margin-bottom:30px;'>
+      <li>Nombre: {{title}}</li>
+      <li>Codigo: {{code}}</li>
+      <li>ID: {{_id}}</li>
+      <button type="button" onclick="addProduct('{{_id}}')" name="Add">Add to Cart</button>
+      <button type="button" onclick="deleteProduct('{{_id}}')" name="Remove">Remove from Cart</button>
+    </ul>
+  {{/each}}
+
+{{#if (gt currentPage 1)}}
+  <a href="{{#if this.prevLink}}{{this.prevLink}}{{else}}#{{/if}}" class="page-link">Previous Page</a>
+{{/if}}
+
+{{#if (lt currentPage totalPages)}}
+  <a href="{{this.nextLink}}"  class="page-link">Next Page</a>
+{{/if}}
+</div>
